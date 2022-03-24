@@ -1,0 +1,37 @@
+//case 1 : if no 1 then always by taking mod with max in array again and again so everyone become 0
+//case 2 : if 1 is there with no consecutive element then can be done by taking max(array)-1 so that
+//every elemnt becomes 1
+//case 3 : if there is 1 and consecutive elements as well then not possible bcoz imagine that we have
+// 0 and 1 , they can never be made equal
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vector<int> v(n);
+        
+        for(int i=0; i<n; i++)
+        {
+            cin>>v[i];
+        }
+        bool one=false;
+        bool consec=false;
+        sort(v.begin(),v.end());
+        
+        for(int i=0; i<n; i++)
+        {
+            if(v[i]==1) one=true;
+            if((i+1 < n) && v[i]+1 == v[i+1]) consec=true;
+        }
+        if(one && consec)
+        cout<<"NO"<<endl;
+        else
+        cout<<"YES"<<endl;
+    }
+    return 0;
+}
