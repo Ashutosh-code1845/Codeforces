@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long 
+ 
+void solve() {
+    ll n, b, x, y;
+    cin>>n>>b>>x>>y;
+    
+    ll sum = 0;
+    ll res = 0;
+    ll i = 0;
+    
+    while(i<n) {
+        if(sum+x <= b) {
+            sum += x;
+            res += sum;
+        }
+        else {
+            sum -= y;
+            res += sum;
+        }
+        i++;
+    }
+    
+    cout<<res<<"\n";
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    ll t;
+    cin>>t;
+    while(t--) {
+        solve();
+    }
+    
+    return 0;
+}
