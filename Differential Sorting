@@ -1,24 +1,5 @@
 #include<bits/stdc++.h>
-#define fastIO ios::sync_with_stdio(false); cin.tie(0)
-#define unless(x) if (!(x))
-#define vi vector<int>
-#define vii vector<pair<int, int>>
-#define all(v) v.begin(), v.end()
- 
-// YOU ARE ACTUALLY **SUPPOSED** TO READ THE FOLLOWING.
-// Read the problem. Now Re-read the problem.
-// Observe each constraint. Please do this. Notice each and every constraint.
-// You have made many mistakes because you didn't read the constraint well enough.
-// You are probably solving a harder version of the given problem.
-// DO NOT OVERSOLVE.
-// Do not look ahead for next problem. Solve the current problem.
-// Do not look at standings.
-// string(count, char)
-// check overflow/underflow
-// queue.push, queue.pop, queue.front, stack.push, stack.pop, stack.top
- 
 using namespace std;
-using ll = long long;
  
 void solve() {
     int n;
