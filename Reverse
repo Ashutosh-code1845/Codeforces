@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+void reverse(vector<int> &arr, int i, int j)
+{
+    while(i!=j)
+    {
+        swap(arr[i],arr[j]);
+        i++;
+        j--;
+    }
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+            int n;
+            cin>>n;
+            
+            vector<int> a(n);
+            vector<int> b(n);
+       for(int i=0;i<n;i++){
+            cin>>a[i];
+            b[i]=a[i];
+           
+       }
+       sort(b.begin(),b.end());
+       
+       int k=0;
+       for(int i=0;i<n;i++){
+            if(a[i]!=b[i]){
+                 k=i;
+                 break;
+            }
+       }
+        int min=INT_MAX;
+       int index=0;
+       for(int i=k;i<n;i++){
+           if(min>a[i]){
+               min=a[i];
+               index=i;
+           }
+       }
+       //part before reversing
+       for(int i=0;i<k;i++){
+           cout<<a[i]<<" ";
+       }
+       //part that need to be reversed
+       for(int i=index;i>=k;i--){
+           cout<<a[i]<<" ";
+       }
+       //part after reversing
+       for(int i=index+1;i<n;i++){
+           cout<<a[i]<<" ";
+       }
+       cout<<endl;
+    }
+    return 0;
+}
