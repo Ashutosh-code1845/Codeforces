@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int x,y;
+        cin>>x>>y;
+        int l = max(x,y);
+        int b = min(x,y);
+        
+        if(l==b)
+        cout<<4*l*b<<endl;
+        else if(l == (2*b))
+        cout<<l*l<<endl;
+        else
+        {
+            if(2*b < l)
+            cout<<l*l<<endl;
+            else
+            cout<<4*b*b<<endl;
+        }
+    }
+    return 0;
+}
