@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define ll long long
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll w,h;
+		cin>>w>>h;
+		ll ans=0;
+		for(int i=1;i<=2;i++)
+		{
+			int k;cin>>k;
+			ll d1,d2;
+			for(int j=0;j<k;j++)
+			{
+				ll x;cin>>x;
+				if(j==0) d1=x;
+				if(j==k-1) d2=x;
+			}
+			ll d=d2-d1;
+			ans=max(ans,d*h);
+		}
+		for(int i=1;i<=2;i++)
+		{
+			int k;cin>>k;
+			ll d1,d2;
+			for(int j=0;j<k;j++)
+			{
+				ll x;cin>>x;
+				if(j==0) d1=x;
+				if(j==k-1) d2=x;
+			}
+			ll d=d2-d1;
+			ans=max(ans,d*w);
+		}
+		cout<<ans<<endl;
+    }
+    return 0;
+}
