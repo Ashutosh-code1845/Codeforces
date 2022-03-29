@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        long long k;
+        int x;
+        cin>>k>>x;
+        
+        long long ans = x + (k-1)*1ll*9;
+        cout<<ans<<endl;
+        
+    }
+    return 0;
+}
