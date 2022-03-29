@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+int main() {
+    fastIO;
+    int t;
+    // cin>>t;
+    // while(t--)
+    // {
+        int n,m,k;
+        cin>>n>>m>>k;
+        
+        vector<int> a(n);
+        
+        for(int i=0; i<n; i++)
+        cin>>a[i];
+        
+        sort(a.begin(), a.end());
+        
+        int x = a[n-1];
+        int y = a[n-2];
+        
+        //since size of each cycle will be k+1
+        //and each cycle will have x*k first elements and then one y so that we can use x again
+        
+        long long ans = m / (k + 1) * 1ll * (x * 1ll * k + y) + m % (k + 1) * 1ll *x ;
+        cout<<ans<<endl;
+    // }
+    return 0;
+}
