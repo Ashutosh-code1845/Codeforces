@@ -13,23 +13,24 @@ void solve()
         return;
     }
     
-    unordered_map<char,int> mp;
-    
     int n = s.size();
-    mp[s[0]]=0;
-    vector<int> ans(n,0);
     
-    for(int i=1; i<s.size(); i++)
+    vector<int> mp(26,0);
+    mp[s[0]-'a']=0;
+    
+    vector<int> ans(n+1,0);
+    
+    for(int i=1; i<=s.size(); i++)
     {
-        if(mp.find(s[i])!=mp.end())
+        if(mp[s[i-1]-'a'] != 0)
         {
-            ans[i]=2+ans[mp[s[i]]-1];
+            ans[i]=2+ans[mp[s[i-1]-'a']-1];
         }
         
         ans[i]=max(ans[i],ans[i-1]);
-        mp[s[i]]=i;
+        mp[s[i-1]-'a']=i;
     }
-    cout<<s.size()-ans[n-1]<<endl;
+    cout<<s.size()-ans[n]<<endl;
 }
 int main() {
     fastIO;
