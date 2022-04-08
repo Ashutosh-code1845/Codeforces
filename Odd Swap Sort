@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+	int n,even,odd; 
+        cin>>n;
+        even=odd=0;
+        bool flag=true;
+        for (int i=0;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            if ((x%2==1&&x<odd)||(x%2==0&&x<even))
+			flag=false;
+            if(x%2==1)
+			odd=x;
+            if(x%2==0)
+			even=x;
+        }
+        if(flag)
+		cout<<"Yes"<<endl;
+        else
+		cout<<"No"<<endl;
+    
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
