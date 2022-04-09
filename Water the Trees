@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    vector<int> v(n);
+    for(int i=0; i<n; i++)
+    cin>>v[i];
+    
+    int maxi=0;
+    for(int i=0; i<10; i++)
+    {}
+    
+    for(int i=0; i<n; i++)
+    {
+        maxi=max(maxi,v[i]);
+    }
+  long long int ans = 1e18;
+  long long int odd=0;
+  long long int even=0;
+  
+  for(int i=maxi; i<=maxi+3; i++){
+   odd=0;
+   even=0;
+   for(int j=0; j<n; j++){
+    even+= (i-v[j])/2;
+    odd+= (i-v[j])%2;
+   }
+   long long total = odd+even*2;
+   long long d = total/3*2;
+    if(total%3==1)
+    d+=1;
+   if(total%3==2)
+    d+=2;
+   ans=min(ans,max(odd*2-1, d));
+  }
+  cout<<ans<<endl;
+    
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
