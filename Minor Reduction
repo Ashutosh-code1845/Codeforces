@@ -1,3 +1,8 @@
+//we will only replace numbers that result in value greater than two otherwise if sum of two numbers
+//result in single digit then it will decrease the overall value
+//the number that results in greater than too will be smaller than those two numbers together so we
+//replace the rightmost number
+
 #include <bits/stdc++.h>
 #define fastIO ios::sync_with_stdio(false); cin.tie(0)
 using namespace std;
