@@ -1,0 +1,37 @@
+//https://www.youtube.com/watch?v=7rzj1RpZm2s&ab_channel=CPWithAbhinav2\
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    //logic is that two near odd numbers are always coprime i.e they do not have any common factors
+    if(n%2 == 0)
+    cout<<n-3<<" "<<2<<" "<<1;
+    else
+    {
+        int x = (n-1)/2;
+        if(x%2 == 0)
+        cout<<((n-1)/2)-1<<" "<<((n-1)/2)+1<<" "<<1;
+        else
+        cout<<((n-1)/2)-2<<" "<<((n-1)/2)+2<<" "<<1;
+    }
+    cout<<endl;
+    
+    
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
