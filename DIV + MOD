@@ -1,0 +1,32 @@
+//x/a will be max when x=r and x%a will be max when x==a-1 so we need to decrease r by x+1 steps to get
+//remainder as a-1 at a cost of decrease in x/a by 1 and after that we can take the maximum
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int l,r,a;
+    cin>>l>>r>>a;
+    
+    int x = r%a;
+    
+    int ans = r/a+x;
+    r-=x+1;
+    if(l<=r)
+    ans=max(ans,r/a + r%a);
+    
+    cout<<ans<<endl;
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
