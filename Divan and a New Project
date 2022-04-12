@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ 
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+ 
+    int t;
+    cin >> t;
+ 
+    while(t--){
+        ll n;
+        cin >> n;
+ 
+        
+ 
+        pair <ll,ll> v[n+1];
+ 
+        for(ll i = 0; i < n; i++){
+            cin >> v[i].first;
+            v[i].second = i;
+        }
+ 
+        sort(v,v + n);
+ 
+        ll time = 0;
+        ll fac = 1;
+ 
+        vector<ll> b(n+1);
+ 
+        for(ll i = n-1; i >= 0; i--){
+            time = time + 2*(v[i].first)*fac;
+            b[v[i].second] = fac;
+            i--;
+            if(i == -1){
+                break;
+            }
+            time = time + 2*(v[i].first)*fac;
+            b[v[i].second] = fac*(-1);
+            fac = fac + 1;
+        }
+ 
+        cout << time << "\n";
+ 
+        cout << 0 << " ";
+ 
+        for(int i = 0; i < n; i++){
+            cout << b[i] << " ";
+        }
+ 
+        cout << "\n";
+ 
+    }
+}
