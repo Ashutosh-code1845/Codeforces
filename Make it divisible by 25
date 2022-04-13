@@ -1,0 +1,59 @@
+//we need to find the min distance between 00 25 75 50 from behind the string to get the number 
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+vector<string> v={"00","25","50","75"};
+
+int count(string s, string x)
+{
+    int n = s.size()-1;
+    int ans=0;
+    
+    while(n>=0 && s[n]!=x[1])
+    {
+        n--;
+        ans++;
+    }
+    
+    if(n<0) return 1e8;
+    
+    n--;    //if found last occuurence among 00 25 75 50 then skip it and lets saerch for the first occurence
+    
+    while(n>=0 && s[n]!=x[0])
+    {
+        n--;
+        ans++;
+    }
+    
+    if(n<0) return 1e8;
+    else 
+    return ans;
+    
+}
+void solve()
+{
+    string s="";
+    cin>>s;
+    
+    int n = s.size();
+    int ans=1e8;
+    
+    for(auto  x:v)
+    {
+        ans=min(ans,count(s,x));
+    }
+    cout<<ans<<endl;
+    
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
