@@ -1,0 +1,42 @@
+//greedy solution 
+//mices near the hole are the one easy to safe so we will try to  make them safe first
+//so we just take the cordinates and sort them and the sum of cordinates(time) for eadch mice will be lesser
+//than n untill then mices can go into hole becausse after that cat will catch them
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+
+void solve()
+{
+    int n,k;
+    cin>>n>>k;
+    
+    vector<int> mice(k);
+    for(int i=0; i<k; i++)
+    cin>>mice[i];
+    
+    sort(mice.rbegin(), mice.rend());
+    int count = 0;
+    long long time = 0; //total time taken by mices
+    
+    while(count < k && time + (n - mice[count]) < n)
+    {
+        time+=n-mice[count];
+        count++;
+    }
+    cout<<count<<endl;
+    
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
