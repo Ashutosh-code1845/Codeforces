@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+
+void solve()
+{
+    int m,n,i,j;
+    cin>>m>>n>>i>>j;
+    
+    cout<<1<<" "<<1<<" "<<m<<" "<<n<<endl;
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
