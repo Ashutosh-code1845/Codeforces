@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    vector<int> even,odd;
+    
+    for(int i=0; i<n; i++)
+    {
+        int x;
+        cin>>x;
+        if(x%2==0)
+        even.push_back(x);
+        else
+        odd.push_back(x);
+    }
+    
+    vector<int> arr;
+    
+    for(int i=0; i<even.size(); i++)
+    arr.push_back(even[i]);
+    
+    for(int i=0; i<odd.size(); i++)
+    arr.push_back(odd[i]);
+    
+    int ans=0;
+    for (int i = 0; i < n; i++) {
+      for (int j = i + 1; j < n; j++) {
+        ans += __gcd(arr[i], arr[j] * 2) > 1;
+      }
+    }
+
+    
+    cout<<ans<<endl;
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
