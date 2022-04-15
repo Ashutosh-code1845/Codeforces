@@ -1,0 +1,52 @@
+//we have some count of zeros and some count of ones and hence in given stringn some postns of some one are occupied of zero
+//and postn of some zero are occupied by one s soo obviously they can be picked in one try
+//and can be reversed to get the sorted result hence in max one operation
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    string s="";
+    cin>>s;
+    
+    if(is_sorted(s.begin(), s.end()))
+    {
+        cout<<0<<endl;
+        return;
+    }
+    
+    string t=s;
+    sort(t.begin(), t.end());
+    
+    vector<int> ans;
+    for(int i=0; i<t.size(); i++)
+    {
+        if(s[i]!=t[i])
+        ans.push_back(i+1);
+    }
+    
+    cout << 1 << "\n";
+    cout<<ans.size()<<" ";
+    
+    for(int i=0; i<ans.size(); i++)
+    cout<<ans[i]<<" ";
+    
+    cout<<endl;
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
