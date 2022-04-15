@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+int dp[501][501];
+int arr[501][501];
+int n,m;
+int min_n(int a,int b,int c)
+{
+	if(b>c)swap(b,c);
+	if(a>b)swap(a,b);
+	return a;
+} 
+int dfs(int x,int y) {
+    if(dp[x][y]!=0) return dp[x][y];
+    int flag=0;
+    dp[x][y]=1;
+    if(x+1<n && y-1>=0 && y+1<m && arr[x+1][y-1]==1 && 
+        arr[x+1][y]==1 && arr[x+1][y+1]==1)
+        dp[x][y]+=min_n(dfs(x+1,y),dfs(x+1,y-1),dfs(x+1,y+1));
+    return dp[x][y];
+}
+void solve()
+{
+    memset(dp,0,sizeof(dp));
+    memset(arr,0,sizeof(arr));
+    cin>>n>>m;
+    int ans=0;
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            char x;
+            cin>>x;
+            if(x=='.')
+                arr[i][j]=0;
+            else 
+                arr[i][j]=1;
+        }
+    }
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++){
+            if(arr[i][j]==1)
+                ans+=dfs(i,j);
+        }
+    }
+    cout<<ans<<endl;
+}
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
