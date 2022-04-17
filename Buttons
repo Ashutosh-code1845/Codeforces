@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    long long int n;
+    cin>>n;
+ 
+     long long sum=0;
+ 
+     for(long long i=1;i<n;i++){
+        sum+=(n-i)*i;
+     }
+     cout<<sum+n;
+}
+
+int main() {
+    fastIO;
+    // int t;
+    // cin>>t;
+    solve();
+    // while(t--)
+    // {
+    //     solve();
+    // }
+    return 0;
+}
