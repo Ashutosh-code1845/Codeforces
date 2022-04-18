@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    pair<int,int> p1,p2,p3;
+    cin>>p1.first>>p1.second;
+    cin>>p2.first>>p2.second;
+    cin>>p3.first>>p3.second;
+    int ans=0;
+    
+    if(p1.second==p2.second || p1.second==p3.second || p2.second==p3.second)
+    {
+        if(p1.second==p2.second && p1.second > p3.second)
+        ans=abs(p2.first-p1.first);
+        
+        else if(p1.second==p3.second && p1.second>p2.second)
+        ans=abs(p3.first-p1.first);
+        
+        else if(p2.second==p3.second && p2.second>p1.second)
+        ans=abs(p2.first-p3.first);
+        
+    }
+    cout<<ans<<endl;
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
