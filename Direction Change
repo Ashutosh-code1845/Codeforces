@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int m,n;
+    cin>>m>>n;
+    
+    if(m==1 && n==1)
+    {
+        cout<<0<<endl;
+    }
+    else if(m==1 || n==1)
+    {
+        if(m==1 && n==2)
+        cout<<1<<endl;
+        else if(m==1 && n>2)
+        cout<<-1<<endl;
+        else if (m==2 && n==1)
+        cout<<1<<endl;
+        else if(m>2 && n==1)
+        cout<<-1<<endl;
+    }
+    else{
+        long long int ans = 0;
+        int x = min(m,n);
+        ans = (x-1)*2;
+        x = abs(m-n);
+        ans+=x;
+        if(x%2 == 0)
+        ans+=x;
+        else ans+=(x-1);
+        cout<<ans<<endl;
+    }
+    
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
