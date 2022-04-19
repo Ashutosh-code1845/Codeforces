@@ -1,0 +1,42 @@
+//https://www.youtube.com/watch?v=xKeukz2TUDQ&ab_channel=BroCoders
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    
+    vector<int> arr(n);
+    for(int i=0; i<n; i++)
+    cin>>arr[i];
+    
+    sort(arr.begin(), arr.end());
+    
+    long long space = n;                    //for placing all n members
+    
+    for(int i=1; i<arr.size(); i++)
+    space+=max(arr[i], arr[i-1]);           //bgal bgal k beech conflict hoga
+    
+    space+=max(arr[0], arr[n-1]);   //for last pair
+    
+    if(space<=m)
+    cout<<"YES"<<endl;
+    else
+    cout<<"NO"<<endl;
+    
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
