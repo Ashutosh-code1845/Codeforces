@@ -1,0 +1,65 @@
+//https://www.youtube.com/watch?v=PfT7yNZCd3I&ab_channel=NamanBansal
+//observation : size of ans is equal to numbers of zeros in arr bcoz those much independent subaarays
+//will be formed to give a mex
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    vector<int> a(n);
+    for(int i=0; i<n; i++)
+    {
+        cin>>a[i];
+    }
+    
+    vector<int> v[n+1];
+    for(int i=n-1; i>=0; i--)
+    v[a[i]].push_back(i);
+    
+    int idx = 0;
+    vector<int> ans;
+    
+    while(idx!=n)
+    {
+        int maxi = idx;
+        
+        for(int i=0; i<=n; i++)
+        {
+            while(v[i].size()>0 && v[i].back()<idx)
+            v[i].pop_back();
+            
+            if(v[i].size()>0)
+            maxi = max(maxi, v[i].back());
+            else
+            {
+                ans.push_back(i);
+                idx = maxi+1;
+                break;
+            }
+        }
+    }
+    
+    cout<<ans.size()<<endl;
+    for(int i=0; i<ans.size(); i++)
+    cout<<ans[i]<<" ";
+    
+    cout<<endl;
+    
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
