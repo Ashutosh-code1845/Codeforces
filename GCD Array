@@ -1,0 +1,43 @@
+//multiplication of one odd and even result in an even
+//so multiplication will be done for number of odd elements so we simply have to check 
+//if k is greater than or equal to odd numbers or not
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+void solve()
+{
+    int l,r,k;
+    cin>>l>>r>>k;
+    
+    if(l==r)
+    {
+        if(l==1 && r==1)
+        cout<<"NO"<<endl;
+        else
+        cout<<"YES"<<endl;
+        return;
+    }
+    
+    int odd = (r - l) / 2;
+    if (r % 2 != 0 || l % 2 != 0)
+    odd++;
+    
+    if(odd<=k)
+    cout<<"YES"<<endl;
+    else
+    cout<<"NO"<<endl;
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
