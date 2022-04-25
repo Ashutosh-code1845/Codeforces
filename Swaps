@@ -1,0 +1,78 @@
+//https://www.youtube.com/watch?v=N3uIZY8LOHU
+//Basic concept : a[0]<b[0] kr do bss
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define py cout<<"YES"<<endl;
+#define pn cout<<"NO"<<endl;
+#define lli long long int
+#define pb push_back
+#define as(v) v.begin(), v.end()
+#define ras(v) v.rbegin(), v.rend()
+
+/*------------------------------------------------------------------------------------------------*/
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    vector<int> odd(n),even(n);
+    unordered_map<int,int> mp;   //to keep swaps of odd numbers
+    
+    for(int i=0; i<n; i++)
+    {
+        cin>>odd[i];
+        mp[odd[i]]=i;
+    }
+        
+    vector<pair<int,int>> v;
+    for(int i=0; i<n; i++)
+    {
+        cin>>even[i];
+        pair<int,int> p;
+        p.first = even[i];
+        p.second = i;
+        v.push_back(p);
+    }
+    
+    sort(as(v));
+    
+    int mini=INT_MAX;
+    
+    for(int i=v.size()-1; i>=0; i--)        //why suffix concept
+    {
+        mini=min(mini,v[i].second);         //because merko at 0th idx of b pr a k 0th idx se bda element
+        v[i].second=mini;                   //rkhna hoga agar for ex a[0]=1 to b[0]>1 to agar 2 rkhne k 
+    }                                       //swap  5 hai aur 10 rkhne k 3 so we will use prefix array
+                                            //so we will use 10 there and hence min is req which we get
+                                            //using suffix array and this is the crux of whole problem
+    int j=0;
+    int ans=INT_MAX;
+    
+    for(int i=1; i<=2*n; i+=2)       //keep iterating odd numbers and placing at 0th idx of a array
+    {
+        int x = mp[i];              //swaps to place i odd number at 0th index
+        int y = v[j].second;        //now i se just bda odd number hoga v[j] pr qki sorted h array
+        ans=min(ans,x+y);
+        j++;
+    }
+    
+    cout<<ans<<endl;
+    
+    
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
