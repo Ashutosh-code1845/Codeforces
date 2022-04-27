@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define py cout<<"YES"<<endl;
+#define pn cout<<"NO"<<endl;
+#define lli long long int
+#define pb push_back
+#define as(v) v.begin(), v.end()
+#define ras(v) v.rbegin(), v.rend()
+
+/*------------------------------------------------------------------------------------------------*/
+
+vector<bool> prime(100, true);
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    string s="";
+    cin>>s;
+    
+    //if it contains 1,4,6,8,9 then always we can delete all numbers and print only these one digit
+    for(int i=0; i<s.size(); i++)
+    {
+        if(s[i]=='1' || s[i]=='4' || s[i]=='6' || s[i]=='8' || s[i]=='9')
+        {
+            cout<<1<<endl;
+            cout<<s[i]<<endl;
+            return;
+        }
+    }
+    //in case 1,6,8,9 is not present then our ans will always have 2 digits
+    for(int i=0; i<s.size(); i++)
+    {
+        for(int j=i+1; j<s.size(); j++)
+        {
+            int x = (s[i]-'0')*10 + (s[j]-'0');
+            if(prime[x]==false)
+            {
+                cout<<2<<endl;
+                cout<<s[i]<<s[j]<<endl;
+                return;
+            }
+        }
+    }
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    //pre calculate for 3 digit numbers using sieve algo
+    prime[0]=prime[1]=false;
+    for(int i=2; i<100; i++)
+    {
+        if(prime[i]==true)
+        {
+            for(int j = 2*i; j<100; j+=i)
+            {
+                prime[j]=false;
+            }
+        }
+    }
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
