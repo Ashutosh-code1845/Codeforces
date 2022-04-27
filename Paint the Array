@@ -1,0 +1,86 @@
+//simply of gcd of odd postn can't divide even postn then it can be ans and if it divides
+//then we check if gcd of even postn can't divide the odd postn then it will be ans
+//and if both condition fails then we not possible
+//TLE Approach : find max of array and d will lie in between 1 and max so iterate for all from q to maxi
+//and check through the array for adjacent elements 
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define py cout<<"YES"<<endl;
+#define pn cout<<"NO"<<endl;
+#define lli long long int
+#define pb push_back
+#define as(v) v.begin(), v.end()
+#define ras(v) v.rbegin(), v.rend()
+
+/*------------------------------------------------------------------------------------------------*/
+
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    vector<long long> arr(n);
+    long long int maxi = 0;
+    
+    for(int i=0; i<n; i++)
+    cin>>arr[i];
+    
+    lli gcd_odd = arr[1];
+    lli gcd_even = arr[0];
+
+    
+    for(int i=2; i<n; i+=2)
+        gcd_even = __gcd(gcd_even, arr[i]);
+        
+    bool odd=true;
+    for(int i=1; i<n; i+=2)
+    {
+        if(arr[i]%gcd_even == 0)
+        {
+            odd=false;
+            break;
+        }
+    }
+    
+    if(odd)
+    {
+        cout<<gcd_even<<endl;
+        return;
+    }
+        
+    for(int i=3; i<n; i+=2)
+        gcd_odd = __gcd(gcd_odd, arr[i]);
+    
+
+    bool even=true;
+    for(int i=0; i<n; i+=2)
+    {
+        if(arr[i]%gcd_odd == 0)
+        even=false;
+    }
+
+    if(even)
+    {
+        cout<<gcd_odd<<endl;
+        return;
+    }
+    
+    cout<<0<<endl;
+    
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
