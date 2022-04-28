@@ -1,0 +1,77 @@
+//we simply have to place odd numbers together in a single row
+//and even together in a single row 
+//If we observe properly then mean of any part of any row results in an integer
+// also if n is odd let 3X3 then we need 6even 3odd OR 3even 6odd but here we get 
+//6 odd and 3 even so it is also not psooible for odd n's
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define py cout<<"YES"<<endl;
+#define pn cout<<"NO"<<endl;
+#define lli long long int
+#define pb push_back
+#define as(v) v.begin(), v.end()
+#define ras(v) v.rbegin(), v.rend()
+
+/*------------------------------------------------------------------------------------------------*/
+
+
+void solve()
+{
+    int n,k;
+    cin>>n>>k;
+    
+    if(k==1)
+    {
+        py
+        for(int i=1; i<=n; i++)
+        cout<<i<<endl;
+        
+        return;
+    }
+    if(n%2==1)
+    {
+        pn
+        return;
+    }
+    else
+    {
+            cout<<"YES"<<endl;
+            int odd=1,even=2;
+            int y=1;
+            for(int i=1;i<=n;i++,y++)
+            {
+                
+                for(int l=1;l<=k;l++)
+                {
+                    if(y<=n/2)
+                    {
+                        cout<<odd<<" ";
+                        odd+=2;
+                    }
+                    else
+                    {
+                        cout<<even<<" ";
+                        even+=2;
+                    }
+ 
+                }
+                 cout<<endl;
+            }
+        
+    }
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
