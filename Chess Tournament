@@ -1,0 +1,107 @@
+//Logic is noob but implmentation is tough
+//if no. of two is 1 or two than not possible observational
+//if 1 is present then make all matches draw otherwise 
+//if two is present then aane wale phle 2 se jeeto and baad walo se haaro
+//ek baar upper matrix complete ho gyi to baakiyo k liye bss sign reverse kr do
+
+#include <bits/stdc++.h>
+#define fastIO ios::sync_with_stdio(false); cin.tie(0)
+using namespace std;
+
+#define py cout<<"YES"<<endl;
+#define pn cout<<"NO"<<endl;
+#define lli long long int
+#define pb push_back
+#define as(v) v.begin(), v.end()
+#define ras(v) v.rbegin(), v.rend()
+/*------------------------------------------------------------------------------------------------*/
+
+void solve()
+{
+    int n;
+    cin>>n;
+    
+    string s="";
+    cin>>s;
+    
+    int one=0;
+    int two=0;
+    
+    for(int i=0; i<s.size(); i++)
+    {
+        if(s[i]=='1')
+        one++;
+        else
+        two++;
+    }
+    
+    if(two==1 || two==2)
+    {
+        pn
+        return;
+    }
+    
+    vector<vector<char>> v(s.size(),vector<char>(s.size(),'*'));
+    
+    for(int i=0; i<s.size(); i++)
+    {
+        bool flag=true;
+        for(int j=0; j<s.size(); j++)
+        {
+            if(i==j)
+            {
+                v[i][j]='X';
+                continue;
+            }
+            else if(s[i]=='1')
+            {
+                v[i][j]='=';    //draw all
+            }
+            else if(s[i]=='2')
+            {
+                if(s[j]=='1')
+                v[i][j]='=';        //draw
+                else if(v[j][i]!='*')       //if it is converse have been visited earlier than reverse sign
+                {
+                    if(v[j][i]=='+')        
+                    v[i][j]='-';
+                    else if(v[j][i]!='*')
+                    v[i][j]='+';
+                    else if(v[j][i]=='=')
+                    v[i][j]='=';
+                }
+                else
+                {
+                        if(s[j]=='2' && flag)   //if first 2 then win from it
+                        {
+                            flag=false;
+                            v[i][j]='+';
+                        }
+                        else if(s[j]=='2' && flag==false)   //if second two then loose from it and from all upcoming twos
+                        v[i][j]='-';
+                }
+            }
+        }
+    }
+        py
+        for(int i=0; i<s.size(); i++)
+        {
+            for(int j=0; j<s.size(); j++)
+            {
+                cout<<v[i][j];
+            }
+            cout<<endl;
+        }
+}
+
+int main() {
+    fastIO;
+    int t;
+    cin>>t;
+    // solve();
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
